@@ -1,0 +1,17 @@
+# clang-tidy 配置：严格开启缺陷与安全相关检查（bugprone-*, clang-analyzer-*, cert-*）
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-suspicious-string-compare,
+  -bugprone-multi-level-implicit-pointer-conversion,
+  -bugprone-assignment-in-if-condition,
+  clang-analyzer-*,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+  -clang-analyzer-optin.performance.Padding,
+  cert-*,
+  -cert-err33-c,
+  -cert-dcl37-c,
+  -cert-dcl51-cpp
+HeaderFilterRegex: '.*[\\/](include|src|tests|tools)[\\/].*'
+WarningsAsErrors: '*'

@@ -1,0 +1,15 @@
+# 构建产物与测试输出
+/build/
+/out/
+/dist/
+*.obj
+*.pdb
+*.ilk
+*.log
+*.db
+*.key
+__pycache__/
+
+# GoogleTest 本地编译静态库与头文件（仅保留 LICENSE 与说明进仓库；Linux 使用系统 libgtest-dev）
+/third_party/googletest/include/
+/third_party/googletest/lib/

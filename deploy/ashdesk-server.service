@@ -1,0 +1,24 @@
+# All-in-one AshDeskServer (signaling + relay) as a systemd service.
+# Install: copy ash_server to /opt/ashdesk-server/, this file to /etc/systemd/system/, then
+#   systemctl daemon-reload && systemctl enable --now ashdesk-server
+# Ports: UDP 44200 (signaling + relay) and 44201 (NAT probe), TCP 443 (firewall fallback); /metrics on 127.0.0.1 only.
+[Unit]
+Description=AshDeskServer (signaling + relay)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/ashdesk-server/ash_server --mode all --port 44200 --tcp-port 443 --metrics-port 18388 --keystore /var/lib/ashdesk-server/devices.db --stats-interval 60
+# Runs as a throwaway user; binding TCP 443 is the only privilege it needs
+DynamicUser=yes
+StateDirectory=ashdesk-server
+WorkingDirectory=/var/lib/ashdesk-server
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=yes
+LimitNOFILE=65536
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
