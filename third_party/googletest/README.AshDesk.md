@@ -16,8 +16,8 @@ vcpkg.json（放在任意一个空目录里，比如 build/vcpkg-gtest）:
   "dependencies": [ "gtest" ] }
 
 "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\vcpkg\vcpkg.exe" install --triplet x64-windows-static-md ^
-  --x-buildtrees-root=D:/Code/AshDesk/build/vcpkg/gbt --x-packages-root=D:/Code/AshDesk/build/vcpkg/gpk ^
-  --x-install-root=D:/Code/AshDesk/build/vcpkg/ginst
+  --x-buildtrees-root=<仓库目录>/build/vcpkg/gbt --x-packages-root=<仓库目录>/build/vcpkg/gpk ^
+  --x-install-root=<仓库目录>/build/vcpkg/ginst
 ```
 
 产物（`build/vcpkg/ginst/x64-windows-static-md/`）拷到这里：

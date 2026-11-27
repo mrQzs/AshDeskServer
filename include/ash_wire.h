@@ -64,7 +64,7 @@ typedef enum {
 
 /* Message types inside 'S' (0x53) namespace */
 typedef enum {
-    /* v1 (100% compatible with D:\Code\AshDesk\proto\common\adp_rdv.h) */
+    /* v1 (100% compatible with the AshDesk engine's adp_rdv v1) */
     ASH_RDV1_REG             = 1,
     ASH_RDV1_REG_OK          = 2,
     ASH_RDV1_LOOKUP          = 3,
