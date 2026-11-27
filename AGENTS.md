@@ -41,3 +41,13 @@ For every new feature or logic change, consider realistic failure modes carefull
 1. **Failure Mode Analysis First**: Before coding, enumerate realistic failure paths—invalid/boundary inputs at entry points, illegal state transitions, and external I/O or resource failures (timeouts, disconnects, corrupted data).
 2. **Explicit Error Propagation**: Never swallow errors silently. Return explicit error types/codes and guarantee resource cleanup and state consistency on failure without overusing `try/catch`.
 3. **1:1 Negative Test Coverage**: Write dedicated unit tests for every identified error path and recovery branch alongside happy-path tests—preferring real boundary inputs and controlled failure simulation over heavy mocking.
+
+## Branches
+
+- **Never commit directly to `master`.** Work on a short-lived branch cut from `master`, one topic per branch:
+  `feature/<topic>` for new features and improvements, `fix/<topic>` for bug fixes, `docs/<topic>` for documentation only
+  (topic in lowercase English, words joined with hyphens, e.g. `feature/clip-agent`, `fix/file-paste-system-host`).
+- Push the branch and open a pull request; CI must pass.
+- Merge into `master` only after the user has verified the change and explicitly says to merge. Merge through the pull request,
+  never force-push, and delete the branch afterwards.
+- `master` is protected: changes land only through pull requests.
